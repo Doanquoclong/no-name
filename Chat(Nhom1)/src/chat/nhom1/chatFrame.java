@@ -10,6 +10,7 @@ import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.OK_CANCEL_OPTION;
 import org.codehaus.jackson.map.ObjectMapper;
 
 
@@ -257,11 +258,15 @@ public class chatFrame extends javax.swing.JFrame {
     
     private void btoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btoutMouseClicked
         // TODO add your handling code here:
+       
         chatFrame cf = new chatFrame();
         JOptionPane.showMessageDialog(cf, "Bạn đã đăng xuất");
         loginFrame LF = new loginFrame();
         LF.setVisible(true);
         this.setVisible(false);
+       
+        
+    
     }//GEN-LAST:event_btoutMouseClicked
 
     /**

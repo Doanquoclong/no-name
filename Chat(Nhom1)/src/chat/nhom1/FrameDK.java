@@ -136,28 +136,31 @@ public class FrameDK extends javax.swing.JFrame {
             FrameDK dk = new FrameDK();
             if(txtUsername.getText().equals("")|txtPassWord.equals("")|txtPassWord1.equals(""))
                   JOptionPane.showMessageDialog(dk, "Bạn cần điền đầy đủ thông tin");
-             else
-            {
-                //(txtPassWord.getTexr().trim()==txtPassWord1.getText().trim());
-            Class.forName("org.sqlite.JDBC");
-            con = DriverManager.getConnection("jdbc:sqlite:SQLNhom1.db");
+            else    
+               if(txtPassWord.getText().trim().equals(txtPassWord1.getText().trim()))
+                    
+                    {
+                    Class.forName("org.sqlite.JDBC");
+                    con = DriverManager.getConnection("jdbc:sqlite:SQLNhom1.db");
 
-            
-            String sql = "INSERT INTO DangNhap(username,password) VALUES(?,?)";
-            PreparedStatement pstmt = con.prepareStatement(sql);
-            
-            pstmt.setString(1, ""+txtUsername.getText().trim());
-            pstmt.setString(2, ""+txtPassWord1.getText().trim());
-            
-            pstmt.executeUpdate();
-            System.out.println("Them Database Thanh Cong");
-             
-            JOptionPane.showMessageDialog(dk, "Bạn đã đăng ký thành công");
-            loginFrame LF = new loginFrame();
-                LF.setVisible(true);            
-                this.setVisible(false);
-            }
-        }catch(Exception e){
+
+                    String sql = "INSERT INTO DangNhap(username,password) VALUES(?,?)";
+                    PreparedStatement pstmt = con.prepareStatement(sql);
+
+                    pstmt.setString(1, ""+txtUsername.getText().trim());
+                    pstmt.setString(2, ""+txtPassWord1.getText().trim());
+
+                    pstmt.executeUpdate();
+                    System.out.println("Them Database Thanh Cong");
+
+                    JOptionPane.showMessageDialog(dk, "Bạn đã đăng ký thành công");
+                    loginFrame LF = new loginFrame();
+                        LF.setVisible(true);            
+                        this.setVisible(false);
+                    } 
+                    else
+                   JOptionPane.showMessageDialog(dk, "Mật khẩu không trùng nhau");
+        }catch(Exception e){                    
             e.printStackTrace();
         }
         
